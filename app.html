@@ -1,0 +1,78 @@
+<html>
+  <h1>Tibia XP Calculator</h1>
+  <head>
+    <script src="js/exp.js"></script>
+  </head>
+  <body>
+    <style>
+      .copiado {
+      color: green;
+      font-weight:bold;
+      }
+
+    </style>
+<label style="margin-left: 25px;">Character Name</label>
+</br>
+<input style="width:170px" type="text" id="lookupName" value="Matauemon Shadowflames">
+</br>
+<button onclick="characterLookup(document.getElementById('lookupName').value)">Buscar</button>
+</br>
+<label id="voc"></label>
+</br>
+<label id="world"></label>
+</br>
+<label id="currentExpApi"> </label>
+</br>
+</br>
+<label style="margin-left: 25px;">Current lvl</label>
+<label style="margin-left: 65px;">Target lvl</label>
+</br>
+<input style="width:130px" type="number" id="current">
+<input style="width:130px" type="number" id="target" value="600">
+<button onclick="document.querySelector('#target').value = 600">600</button>
+<button onclick="document.querySelector('#target').value = 650">650</button>
+<button onclick="document.querySelector('#target').value = 700">700</button>
+<button onclick="document.querySelector('#target').value = 750">750</button>
+<button onclick="document.querySelector('#target').value = 800">800</button>
+
+<div class="slidecontainer">
+  <input type="range" min="0" max="100" value="0" class="slider" id="myRange">
+</div>
+<label for="start">Goal date:</label>
+
+<input type="date" id="goalDatePicker" name="trip-start"
+       value="2023-04-17"
+       min="2023-03-01" max="2024-01-01">
+</br>
+<button onclick="calculate()">calculate</button>
+</br>
+
+<label id="blessCost"> </label>
+</br>
+<label id="xpSiguienteLvl"></label>
+</br>
+<label id="dias"></label>
+</br>
+<label id="xpTotal"></label>
+</br>
+<label id="xpDayG" style="color:green; font-weight:bold"></label>
+<label id="xpDayR" style="color:red; font-weight:bold"></label>
+</br>
+<label id="xpWeek"></label>
+</br>
+<label id="xpMonth"></label>
+
+</br>
+----------------------------
+</br>
+<h2>Boosted</h2>
+<label id="boostedCreatureName"></label>
+<label style="margin-left: 50px;" id="boostedBossName"></label>
+</br>
+<img id="boostedCreatureImg"></img>
+<img style="margin-left: 50px;" id="boostedBossImg"></img>
+
+
+
+</body>
+</html>
