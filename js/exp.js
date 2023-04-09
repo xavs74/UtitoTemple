@@ -19,16 +19,16 @@ async function characterLookup(charName){
     for (const character of data.highscores.highscore_list){
       if (character.name == charName){
         document.getElementById("current").value = character.level
-        document.getElementById("voc").textContent = "Voc: " + character.vocation
-        document.getElementById("world").textContent = "World: " + character.world
-        document.getElementById("currentExpApi").textContent = "Current Xp: " + character.value
-        //console.log(character)
+        //document.getElementById("voc").textContent = "Voc: " + character.vocation
+        //document.getElementById("world").textContent = "World: " + character.world
+        //document.getElementById("currentExpApi").textContent = "Current Xp: " + character.value
+        console.log(character.name + " fetched")
         return character;
       }
     }
-    console.log("Not in list #" + i.toString())
+    //console.log("Not in list #" + i.toString())
   }
-}
+};
 
 //console.log(data)
 
@@ -37,268 +37,22 @@ async function boostedCreature(){
   const data = await fetchApi(url)
   document.getElementById("boostedCreatureName").textContent = data.creatures.boosted.name
   document.getElementById("boostedCreatureImg").src = data.creatures.boosted.image_url
-}
+};
 
 async function boostedBoss(){
   const url = "https://api.tibiadata.com/v3/boostablebosses"
   const data = await fetchApi(url)
   document.getElementById("boostedBossName").textContent = data.boostable_bosses.boosted.name
   document.getElementById("boostedBossImg").src = data.boostable_bosses.boosted.image_url
-}
+};
 
 function numberWithDotss(x) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-}
-var lvls = [
-2942688200 // 563
-,2958452400 // 564
-,2974272800 // 565
-,2990149500 // 566
-,3006082600 // 567
-,3022072200 // 568
-,3038118400 // 569
-,3054221300 // 570
-,3070381000 // 571
-,3086597600 // 572
-,3102871200 // 573
-,3119201900 // 574
-,3135589800 // 575
-,3152035000 // 576
-,3168537600 // 577
-,3185097700 // 578
-,3201715400 // 579
-,3218390800 // 580
-,3235124000 // 581
-,3251915100 // 582
-,3268764200 // 583
-,3285671400 // 584
-,3302636800 // 585
-,3319660500 // 586
-,3336742600 // 587
-,3353883200 // 588
-,3371082400 // 589
-,3388340300 // 590
-,3388340300 // 591
-,3405657000 // 592
-,3423032600 // 593
-,3440467200 // 594
-,3457960900 // 595
-,3475513800 // 596
-,3493126000 // 597
-,3510797600 // 598
-,3528528700 // 599
-,3546319400 // 600
-,3564169800 // 601
-,3582080000 // 602
-,3600050100 // 603
-,3618080200 // 604
-,3636170400 // 605
-,3654320800 // 606
-,3672531500 // 607
-,3690802600 // 608
-,3709134200 // 609
-,3727524000 // 610
-,3745979300 // 611
-,3764493000 // 612
-,3783067600 // 613
-,3801703200 // 614
-,3820399900 // 615
-,3839157800 // 616
-,3857977000 // 617
-,3876857600 // 618
-,3895799700 // 619
-,3914834000 // 620
-,3933868800 // 621
-,3952996000 // 622
-,3972185100 // 623
-,3991436200 // 624
-,4010749400 // 625
-,4030124800 // 626
-,4049562500 // 627
-,4069062600 // 628
-,4088625200 // 629
-,4108504000 // 630
-,4127938300 // 631
-,4147689000 // 632
-,4167502600 // 633
-,4187379200 // 634
-,4207318900 // 635
-,4227321800 // 636
-,4247388000 // 637
-,4267517600 // 638
-,4287710700 // 639
-,4309674000 // 640
-,4328287800 // 641
-,4348672000 // 642
-,4369120100 // 643
-,4389632200 // 644
-,4410208400 // 645
-,4430848800 // 646
-,4451553500 // 647
-,4472322600 // 648
-,4493156200 // 649
-,4540544000 // 650
-,4535017300 // 651
-,4556045000 // 652
-,4577137600 // 653
-,4598295200 // 654
-,4619517900 // 655
-,4640805800 // 656
-,4662159000 // 657
-,4683577600 // 658
-,4705061700 // 659
-,4266114000 // 660
-,4748226800 // 661
-,4769908000 // 662
-,4791655100 // 663
-,4813468200 // 664
-,4835347400 // 665
-,4857292800 // 666
-,4879304500 // 667
-,4901382600 // 668
-,4923527200 // 669
-,4945738400 // 670
-,4968016300 // 671
-,4990361000 // 672
-,5012772600 // 673
-,5035251200 // 674
-,5057796900 // 675
-,5080409800 // 676
-,5103090000 // 677
-,5125837600 // 678
-,5148652700 // 679
-,5171535400 // 680
-,5194458000 // 681
-,5217504000 // 682
-,5240590100 // 683
-,5263744200 // 684
-,5286966400 // 685
-,5310256800 // 686
-,5333615500 // 687
-,5357042600 // 688
-,5380538200 // 689
-,5404102400 // 690
-,5427733000 // 691
-,5451437000 // 692
-,5475207600 // 693
-,5499047200 // 694
-,5522955900 // 695
-,5546933800 // 696
-,5570981000 // 697
-,5595097600 // 698
-,5619283700 // 699
-,5643539400 // 699
-,5667864800 // 700
-,5692260000 // 701
-,5716725100 // 702
-,5741260200 // 703
-,5765865400 // 704
-,5790540800 // 705
-,5815286500 // 706
-,5840102600 // 707
-,5864989200 // 708
-,5889946400 // 709
-,5914974300 // 710
-,5940073000 // 711
-,5965242600 // 712
-,5990483200 // 713
-,6015794900 // 714
-,6041177800 // 715
-,6066632000 // 716
-,6092157600 // 717
-,6117754700 // 718
-,6143423400 // 719
-,6169163800 // 720
-,6194976000 // 721
-,6220860100 // 722
-,6246816200 // 723
-,6272844400 // 724
-,6298944800 // 725
-,6325117500 // 726
-,6351362600 // 727
-,6377680200 // 728
-,6404070400 // 729
-,6430533300 // 730
-,6457069000 // 731
-,6483677600 // 732
-,6510359200 // 733
-,6537113900 // 734
-,6563941800 // 735
-,6590843000 // 736
-,6617817600 // 737
-,6644865700 // 738
-,6671987400 // 739
-,6699182800 // 740
-,6726452000 // 741
-,6753795100 // 742
-,6781212200 // 743
-,6808703400 // 744
-,6836268800 // 745
-,6863908500 // 746
-,6891622600 // 747
-,6919411200 // 748
-,6947274400 // 749
-,6975212300 // 750
-,7003225000 // 751
-,7031312600 // 752
-,7059475200 // 753
-,7087712900 // 754
-,7116025800 // 755
-,7144414000 // 756
-,7172877600 // 757
-,7201416700 // 758
-,7230031400 // 759
-,7258721800 // 760
-,7287488000 // 761
-,7316330100 // 762
-,7345248200 // 763
-,7374242400 // 764
-,7403312800 // 765
-,7432459500 // 766
-,7461682600 // 767
-,7490982200 // 768
-,7520358400 // 769
-,7549811300 // 770
-,7579341000 // 771
-,7608947600 // 772
-,7638631200 // 773
-,7668391900 // 774
-,7698229800 // 775
-,7728145000 // 776
-,7758137600 // 777
-,7788207700 // 778
-,7818355400 // 779
-,7848580800 // 780
-,7878884000 // 781
-,7909265100 // 782
-,7939724200 // 783
-,7970261400 // 784
-,8000876800 // 785
-,8031570500 // 786
-,8062342600 // 787
-,8093932000 // 788
-,8124122400 // 789
-,8155130300 // 790
-,8186217000 // 791
-,8217382600 // 792
-,8248627200 // 793
-,8279950900 // 794
-,8311353800 // 795
-,8342836000 // 796
-,8374397600 // 797
-,8406038700 // 798
-,8437759400 // 799
-,8469559800 // 800
-];
+};
 
-async function calculate(charApi) {
-  var index = 563;
-  //console.log(xpTable)
-  //console.log(charApi)
+async function calculate() {
 
-  //const char = await characterLookup(document.getElementById('lookupName').value)
-
-  //console.log(char)
+  const char = await characterLookup(document.getElementById('lookupName').value)
 
   var hoy = new Date();
   var fin = new Date(2024,1, 1);
@@ -313,31 +67,32 @@ async function calculate(charApi) {
   const one_day=1000*60*60*24;
   var daysLeft = Math.floor(Math.abs(fin-hoy) / one_day);
 
-  var currentLvl = Number(document.querySelector("#current").value);
+  var currentLvl = char.level;
   var targetLvl = Number(document.querySelector("#target").value);
 
 
   var pctje = Number(document.querySelector("#myRange").value)/100;
-  //var pctjeApi = 100*(1-(lvls[currentLvl-index+1] - char.value)/(lvls[currentLvl-index+1] - lvls[currentLvl-index]));
-  var xpSiguienteLvl = lvls[currentLvl-index+1]-lvls[currentLvl-index];
-  var iniExp = lvls[currentLvl-index]+xpSiguienteLvl*pctje;
-  var finExp = lvls[targetLvl-index];
-  var blessCost = 1.1*5*(20000+(currentLvl-120)*75)+2*(26000+(currentLvl-120)*100)
+  var pctjeApi = 100*(1-(xpTable[char.level].experience - char.value)/(xpTable[char.level].experience - xpTable[char.level-1].experience));
+  var xpSiguienteLvl = xpTable[char.level].experience - char.value;
+  var iniExp = char.value;
+  var finExp = xpTable[targetLvl-1].experience;
+  var blessCost = 1.1*5*(20000+(currentLvl-120)*75)+2*(26000+(currentLvl-120)*100);
 
-  //document.getElementById("myRange").value = pctjeApi
+
+  document.getElementById("myRange").value = pctjeApi
 
 
   document.getElementById("xpDayG").textContent="";
   document.getElementById("xpDayR").textContent="";
 
 
-  document.getElementById("xpSiguienteLvl").textContent = numberWithDotss(Math.floor(xpSiguienteLvl*(1-pctje))) + " para siguiente lvl";
+  document.getElementById("xpSiguienteLvl").textContent = numberWithDotss(Math.floor(xpSiguienteLvl)) + " para siguiente lvl";
   if (Math.floor((finExp-iniExp) / daysLeft)>targetXP)
   document.getElementById("xpDayR").textContent = numberWithDotss(Math.floor((finExp-iniExp) / daysLeft)) + " xp/dia";
   else
   document.getElementById("xpDayG").textContent = numberWithDotss(Math.floor((finExp-iniExp) / daysLeft)) + " xp/dia";
 
-  document.getElementById("dias").textContent = "Quedan " +daysLeft+ " días.";
+  document.getElementById("dias").textContent = "Quedan " +daysLeft+ " dias.";
   document.getElementById("xpTotal").textContent = numberWithDotss(Math.floor((finExp-iniExp))) + " xp total";
 
   document.getElementById("xpWeek").textContent = numberWithDotss(Math.floor((finExp-iniExp) / daysLeft*7)) + " xp/semana";
@@ -369,9 +124,7 @@ fetchApi(url)
 
 */
 
-var xpTable = 
-  {
-    "experienceTable":[
+var xpTable = [
     {
         "level": 1,
         "experience": 0
@@ -12372,6 +12125,5 @@ var xpTable =
         "level": 3000,
         "experience": 449100849800
     }
-    ]
-}
+    ];
 
