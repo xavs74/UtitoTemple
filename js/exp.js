@@ -30,6 +30,19 @@ async function characterLookup(charName){
   }
 };
 
+async function rashid(){
+    const city = ["Carlin","Svargrond","Liberty Bay","Port Hope","Ankrahmun","Darashia","Edron"];
+    const date = new Date();
+
+    if ( date.getDay() == 0 && date.getHours() >= 10 || date.getDay() == 1 && date.getHours() < 10 ) document.getElementById("rashid").textContent = city[0]
+    if ( date.getDay() == 1 && date.getHours() >= 10 || date.getDay() == 2 && date.getHours() < 10 ) document.getElementById("rashid").textContent = city[1]
+    if ( date.getDay() == 2 && date.getHours() >= 10 || date.getDay() == 3 && date.getHours() < 10 ) document.getElementById("rashid").textContent = city[2]
+    if ( date.getDay() == 3 && date.getHours() >= 10 || date.getDay() == 4 && date.getHours() < 10 ) document.getElementById("rashid").textContent = city[3]
+    if ( date.getDay() == 4 && date.getHours() >= 10 || date.getDay() == 5 && date.getHours() < 10 ) document.getElementById("rashid").textContent = city[4]
+    if ( date.getDay() == 5 && date.getHours() >= 10 || date.getDay() == 6 && date.getHours() < 10 ) document.getElementById("rashid").textContent = city[5]
+    if ( date.getDay() == 6 && date.getHours() >= 10 || date.getDay() == 0 && date.getHours() < 10 ) document.getElementById("rashid").textContent = city[6]
+};
+
 async function boostedCreature(){
   const url = "https://api.tibiadata.com/v3/creatures"
   const data = await fetchApi(url)
@@ -105,8 +118,12 @@ async function calculate() {
   document.getElementById("expShare").textContent = "Share desde level " + Math.round(currentLvl * (2/3)) + " hasta level " + Math.round(currentLvl * (3/2));
 }
 
-boostedCreature()
-boostedBoss()
+async function init(){
+    boostedCreature();
+    boostedBoss();
+    rashid();
+}
+
 //const miChar =  characterLookup(url,"Matauemon Shadowflames")
 //miChar.then(data => document.getElementById("currentExpApi").textContent = data.value)
 
