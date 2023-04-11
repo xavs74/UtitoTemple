@@ -1,6 +1,8 @@
 <html>
   <h1>Tibia XP Calculator</h1>
   <head>
+    <title>Tibia XP</title>
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
     <script src="js/exp.js"></script>
   </head>
   <body>
@@ -11,9 +13,12 @@
       }
 
     </style>
-<label style="margin-left: 25px;">Character Name</label>
+<label style="margin-left: 25px;" id="characterName">Character Name</label>
 </br>
 <input style="width:170px" type="text" id="lookupName" value="Matauemon Shadowflames">
+<button onclick="document.querySelector('#characterName').value = 'Matauemon Shadowflames'">Matauemon Shadowflames</button>
+<button onclick="document.querySelector('#characterName').value = 'Sir Peppi'">Sir Peppi</button>
+<button onclick="document.querySelector('#characterName').value = 'Larerdrir'">Larerdrir</button>
 </br>
 <!--
 <button onclick="characterLookup(document.getElementById('lookupName').value)">Buscar</button>
@@ -49,7 +54,8 @@
 </br>
 <button onclick="calculate()">calculate</button>
 </br>
-
+<label id="expShare"> </label>
+</br>
 <label id="blessCost"> </label>
 </br>
 <label id="xpSiguienteLvl"></label>
@@ -73,9 +79,7 @@
 <label style="margin-left: 50px;" id="boostedBossName"></label>
 </br>
 <img id="boostedCreatureImg"></img>
-<img style="margin-left: 50px;" id="boostedBossImg"></img>
-
-
+<img style="margin-left: 114px;" id="boostedBossImg"></img>
 
 </body>
 </html>

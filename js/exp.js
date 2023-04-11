@@ -30,8 +30,6 @@ async function characterLookup(charName){
   }
 };
 
-//console.log(data)
-
 async function boostedCreature(){
   const url = "https://api.tibiadata.com/v3/creatures"
   const data = await fetchApi(url)
@@ -70,6 +68,12 @@ async function calculate() {
   var currentLvl = char.level;
   var targetLvl = Number(document.querySelector("#target").value);
 
+  //if (currentLvl < 800) document.getElementById("target").value = "800"
+  //if (currentLvl < 750) document.getElementById("target").value = "750"
+  //if (currentLvl < 700) document.getElementById("target").value = "700"
+  //if (currentLvl < 650) document.getElementById("target").value = "650"
+  //if (currentLvl < 600) document.getElementById("target").value = "600"
+
 
   var pctje = Number(document.querySelector("#myRange").value)/100;
   var pctjeApi = 100*(1-(xpTable[char.level].experience - char.value)/(xpTable[char.level].experience - xpTable[char.level-1].experience));
@@ -97,8 +101,8 @@ async function calculate() {
 
   document.getElementById("xpWeek").textContent = numberWithDotss(Math.floor((finExp-iniExp) / daysLeft*7)) + " xp/semana";
   document.getElementById("xpMonth").textContent = numberWithDotss(Math.floor((finExp-iniExp) / daysLeft*30)) + " xp/mes";
-  document.getElementById("blessCost").textContent = numberWithDotss(1.1*5*(20000+(currentLvl-120)*75)+2*(26000+(currentLvl-120)*100)) + " k blessings/muerte";
-
+  document.getElementById("blessCost").textContent = numberWithDotss(Math.floor(1.1*5*(20000+(currentLvl-120)*75)+2*(26000+(currentLvl-120)*100))) + " k blessings/muerte";
+  document.getElementById("expShare").textContent = "Share desde level " + Math.round(currentLvl * (2/3)) + " hasta level " + Math.round(currentLvl * (3/2));
 }
 
 boostedCreature()
