@@ -2,10 +2,17 @@
   <h1>Tibia XP Calculator</h1>
   <head>
     <title>Tibia XP</title>
-    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+    <link rel="icon" href="img/favicon.ico">
+    <link rel="stylesheet" href="style.css">
   </head>
   <body onload="init()">
     <script src="js/exp.js"></script>
+
+    <div class="grid-container">
+      <div class="grid-item grid-item-1"></div>
+      <div class="grid-item grid-item-2"></div>
+      <div class="grid-item grid-item-3"></div>
+    </div>
     <style>
       .copiado {
       color: green;
@@ -16,9 +23,9 @@
     <label style="margin-left: 25px;" id="characterName">Character Name</label>
     </br>
     <input style="width:170px" type="text" id="lookupName" value="Matauemon Shadowflames">
-    <button onclick="document.getElementById('characterName').value = 'Matauemon Shadowflames'">Matauemon Shadowflames</button>
-    <button onclick="document.getElementById('characterName').value = 'Sir Peppi'">Sir Peppi</button>
-    <button onclick="document.getElementById('characterName').value = 'Larerdrir'">Larerdrir</button>
+    <button onclick="document.getElementById('lookupName').value = 'Matauemon Shadowflames'">Matauemon Shadowflames</button>
+    <button onclick="document.getElementById('lookupName').value = 'Sir Peppi'">Sir Peppi</button>
+    <button onclick="document.getElementById('lookupName').value = 'Larerdrir'">Larerdrir</button>
     </br>
     <!--
     <button onclick="characterLookup(document.getElementById('lookupName').value)">Buscar</button>
@@ -79,13 +86,13 @@
     <label style="margin-left: 50px;" id="boostedBossName"></label>
     </br>
     <img id="boostedCreatureImg"></img>
-    <img style="margin-left: 114px;" id="boostedBossImg"></img>
+    <img style="margin-left: 60px;" id="boostedBossImg"></img>
     </br>
     </br>
     ----------------------------
     </br>
     <h2>Rashid</h2>
-    <img src="img/Rashid.gif" width="50" height="50"></img>
+    <img src="img/Rashid.gif" width="3.5%" height="3.5%"></img>
     </br>
     <label id="rashid"></label>
   </body>

@@ -19,28 +19,25 @@ async function characterLookup(charName){
     for (const character of data.highscores.highscore_list){
       if (character.name == charName){
         document.getElementById("current").value = character.level
-        //document.getElementById("voc").textContent = "Voc: " + character.vocation
-        //document.getElementById("world").textContent = "World: " + character.world
-        //document.getElementById("currentExpApi").textContent = "Current Xp: " + character.value
         console.log(character.name + " fetched")
         return character;
       }
     }
-    //console.log("Not in list #" + i.toString())
   }
 };
 
 async function rashid(){
     const city = ["Carlin","Svargrond","Liberty Bay","Port Hope","Ankrahmun","Darashia","Edron"];
     const date = new Date();
+    const serverSave = 9;
 
-    if ( date.getDay() == 0 && date.getHours() >= 10 || date.getDay() == 1 && date.getHours() < 10 ) document.getElementById("rashid").textContent = city[0]
-    if ( date.getDay() == 1 && date.getHours() >= 10 || date.getDay() == 2 && date.getHours() < 10 ) document.getElementById("rashid").textContent = city[1]
-    if ( date.getDay() == 2 && date.getHours() >= 10 || date.getDay() == 3 && date.getHours() < 10 ) document.getElementById("rashid").textContent = city[2]
-    if ( date.getDay() == 3 && date.getHours() >= 10 || date.getDay() == 4 && date.getHours() < 10 ) document.getElementById("rashid").textContent = city[3]
-    if ( date.getDay() == 4 && date.getHours() >= 10 || date.getDay() == 5 && date.getHours() < 10 ) document.getElementById("rashid").textContent = city[4]
-    if ( date.getDay() == 5 && date.getHours() >= 10 || date.getDay() == 6 && date.getHours() < 10 ) document.getElementById("rashid").textContent = city[5]
-    if ( date.getDay() == 6 && date.getHours() >= 10 || date.getDay() == 0 && date.getHours() < 10 ) document.getElementById("rashid").textContent = city[6]
+    if ( date.getDay() == 0 && date.getHours() >= serverSave || date.getDay() == 1 && date.getHours() < serverSave ) document.getElementById("rashid").textContent = city[0]
+    if ( date.getDay() == 1 && date.getHours() >= serverSave || date.getDay() == 2 && date.getHours() < serverSave ) document.getElementById("rashid").textContent = city[1]
+    if ( date.getDay() == 2 && date.getHours() >= serverSave || date.getDay() == 3 && date.getHours() < serverSave ) document.getElementById("rashid").textContent = city[2]
+    if ( date.getDay() == 3 && date.getHours() >= serverSave || date.getDay() == 4 && date.getHours() < serverSave ) document.getElementById("rashid").textContent = city[3]
+    if ( date.getDay() == 4 && date.getHours() >= serverSave || date.getDay() == 5 && date.getHours() < serverSave ) document.getElementById("rashid").textContent = city[4]
+    if ( date.getDay() == 5 && date.getHours() >= serverSave || date.getDay() == 6 && date.getHours() < serverSave ) document.getElementById("rashid").textContent = city[5]
+    if ( date.getDay() == 6 && date.getHours() >= serverSave || date.getDay() == 0 && date.getHours() < serverSave ) document.getElementById("rashid").textContent = city[6]
 };
 
 async function boostedCreature(){
@@ -69,6 +66,14 @@ async function calculate() {
   var fin = new Date(2024,1, 1);
   var fecha = document.getElementById("goalDatePicker").value;
   fin = new Date(fecha);
+
+  //if ( char.level < 600 ) document.getElementById("target").value = 600
+  //if ( char.level >= 600 && char.level < 650 ) document.getElementById("target").value = 650
+  //if ( char.level >= 650 && char.level < 700 ) document.getElementById("target").value = 700
+  //if ( char.level >= 700 && char.level < 750 ) document.getElementById("target").value = 750
+  //if ( char.level >= 750 && char.level < 800 ) document.getElementById("target").value = 800
+
+
   var targetXP = 3546319;
   if (targetLvl == 600) targetXP = 3546319;
   if (targetLvl == 650) targetXP = 4540544;
@@ -124,26 +129,6 @@ async function init(){
     rashid();
 }
 
-//const miChar =  characterLookup(url,"Matauemon Shadowflames")
-//miChar.then(data => document.getElementById("currentExpApi").textContent = data.value)
-
-
-// const data = fetchApi(url)
-
-
-
-/*
-fetchApi(url)
-  .then(data => {
-    for (const character of data.highscores.highscore_list){
-      if (character.name == "Matauemon Shadowflames"){
-        console.log(character)
-      }
-    }
-    console.log(data.highscores.highscore_list.length)
-  });
-
-*/
 
 var xpTable = [
     {
