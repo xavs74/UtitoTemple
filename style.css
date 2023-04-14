@@ -4,18 +4,28 @@
 }
 body {
     background-color: rgb(32, 34, 37);
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Roboto;
     margin: 0px;
 }
 .header {
-    padding: 10px;
+    padding: 1%;
     text-align: left;
-    padding-left: 110px;
+    padding-left: 6%;
     background: rgb(139, 99, 227);
     color: white;
-    font-size: 20px;
+    font-size: 15px;
     margin-top: 0;
     margin-bottom: 30px;
+}
+.header-items {
+    display: block;
+    flex: auto;
+}
+.header-item-1 h1, .header-item-1 img {
+    display: inline-block;
+}
+.header-img {
+    margin-right: 10px;
 }
 .inicial {
     width: 100%;
@@ -24,10 +34,6 @@ body {
     height: 4px;
     margin-bottom: 4px;
     background-color: rgb(255, 255, 255);
-}
-h1{
-    color:white;
-    text-align: center;
 }
 h2{
     color: white;
