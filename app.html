@@ -1,31 +1,40 @@
+<!DOCTYPE html>
 <html>
-  <h1>Tibia XP Calculator</h1>
   <head>
     <title>Tibia XP</title>
-    <link rel="icon" href="img/favicon.ico">
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="img/favicon.ico">
   </head>
   <body onload="init()">
     <script src="js/exp.js"></script>
+    <header class="header">Tibia XP Calculator</header>
+    <div class="incial"></div>
 
-    <div class="grid-container">
-      <div class="grid-item grid-item-1"></div>
-      <div class="grid-item grid-item-2"></div>
-      <div class="grid-item grid-item-3"></div>
+    <div class="left-block">
+      <h2>Boosted</h2>
+      <div class="boosted-inner-block">
+        <div class="left-inner-div">
+          <label class="left-label" id="boostedCreatureName"></label>
+          <img id="boostedCreatureImg"></img>
+        </div>
+        <div class="left-inner-div">
+          <label class="left-label" id="boostedBossName"></label>
+          <img id="boostedBossImg"></img>
+        </div>
+        <h2>Rashid</h2>
+        <div class="left-inner-div">
+          <label class="left-label" id="rashid"></label>
+          <img src="img/Rashid.gif" width="25%" height="25%"></img>
+        </div>
+      </div>
     </div>
-    <style>
-      .copiado {
-      color: green;
-      font-weight:bold;
-      }
 
-    </style>
     <label style="margin-left: 25px;" id="characterName">Character Name</label>
     </br>
     <input style="width:170px" type="text" id="lookupName" value="Matauemon Shadowflames">
-    <button onclick="document.getElementById('lookupName').value = 'Matauemon Shadowflames'">Matauemon Shadowflames</button>
-    <button onclick="document.getElementById('lookupName').value = 'Sir Peppi'">Sir Peppi</button>
-    <button onclick="document.getElementById('lookupName').value = 'Larerdrir'">Larerdrir</button>
+    <button class="char-button" onclick="document.getElementById('lookupName').value = 'Matauemon Shadowflames'">Matauemon Shadowflames</button>
+    <button class="char-button" onclick="document.getElementById('lookupName').value = 'Sir Peppi'">Sir Peppi</button>
+    <button class="char-button" onclick="document.getElementById('lookupName').value = 'Larerdrir'">Larerdrir</button>
     </br>
     <!--
     <button onclick="characterLookup(document.getElementById('lookupName').value)">Buscar</button>
@@ -44,11 +53,11 @@
     </br>
     <input style="width:130px" type="number" id="current">
     <input style="width:130px" type="number" id="target" value="600">
-    <button onclick="document.querySelector('#target').value = 600">600</button>
-    <button onclick="document.querySelector('#target').value = 650">650</button>
-    <button onclick="document.querySelector('#target').value = 700">700</button>
-    <button onclick="document.querySelector('#target').value = 750">750</button>
-    <button onclick="document.querySelector('#target').value = 800">800</button>
+    <button class="level-button" onclick="document.querySelector('#target').value = 600">600</button>
+    <button class="level-button" onclick="document.querySelector('#target').value = 650">650</button>
+    <button class="level-button" onclick="document.querySelector('#target').value = 700">700</button>
+    <button class="level-button" onclick="document.querySelector('#target').value = 750">750</button>
+    <button class="level-button" onclick="document.querySelector('#target').value = 800">800</button>
 
     <div class="slidecontainer">
       <input type="range" min="0" max="100" value="0" class="slider" id="myRange">
@@ -59,7 +68,7 @@
           value="2023-04-17"
           min="2023-03-01" max="2024-01-01">
     </br>
-    <button onclick="calculate()">calculate</button>
+    <button class="calcular-button" onclick="calculate()">CALCULAR</button>
     </br>
     <label id="expShare"> </label>
     </br>
@@ -77,23 +86,5 @@
     <label id="xpWeek"></label>
     </br>
     <label id="xpMonth"></label>
-
-    </br>
-    ----------------------------
-    </br>
-    <h2>Boosted</h2>
-    <label id="boostedCreatureName"></label>
-    <label style="margin-left: 50px;" id="boostedBossName"></label>
-    </br>
-    <img id="boostedCreatureImg"></img>
-    <img style="margin-left: 60px;" id="boostedBossImg"></img>
-    </br>
-    </br>
-    ----------------------------
-    </br>
-    <h2>Rashid</h2>
-    <img src="img/Rashid.gif" width="3.5%" height="3.5%"></img>
-    </br>
-    <label id="rashid"></label>
   </body>
 </html>
