@@ -117,10 +117,11 @@ label {
 }
 .progress {
     --progress: 0%;
-    width: 498px;
+    width: 248px;
     height: 10px;
     margin: 1em auto;
     border: 1px solid #000000;
+    margin-top: 20px;
 }
   
 .progress .bar {
@@ -129,16 +130,18 @@ label {
     background: rgb(0, 192, 0);
 }
 .level-inner {
-    width: 500px;
+    width: 250px;
     overflow: hidden;
+    margin: auto;
 }
 .level-name, .level-number {
     display: inline-block;
 }
 .level-name {
+    float: left;
 }
 .level-number {
-
+    float: right;
 }
 .char-button {
     background-color: rgb(139, 99, 227);

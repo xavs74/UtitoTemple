@@ -18,7 +18,7 @@ async function characterLookup(charName){
     const data = await fetchApi(url+i.toString())
     for (const character of data.highscores.highscore_list){
       if (character.name == charName){
-        document.getElementById("current").value = character.level
+        //document.getElementById("current").value = character.level
         document.getElementById("charLevel").textContent = character.level
         console.log(character.name + " fetched")
         return character;
@@ -96,7 +96,7 @@ async function calculate() {
   //if (currentLvl < 600) document.getElementById("target").value = "600"
 
 
-  var pctje = Number(document.querySelector("#myRange").value)/100;
+  //var pctje = Number(document.querySelector("#myRange").value)/100;
   var pctjeApi = 100*(1-(xpTable[char.level].experience - char.value)/(xpTable[char.level].experience - xpTable[char.level-1].experience));
   var xpSiguienteLvl = xpTable[char.level].experience - char.value;
   var iniExp = char.value;
@@ -104,7 +104,7 @@ async function calculate() {
   var blessCost = 1.1*5*(20000+(currentLvl-120)*75)+2*(26000+(currentLvl-120)*100);
 
 
-  document.getElementById("myRange").value = pctjeApi
+  //document.getElementById("myRange").value = pctjeApi
   bar.style.setProperty("--progress", pctjeApi.toString()+"%");
 
 
