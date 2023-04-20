@@ -19,6 +19,7 @@ async function characterLookup(charName){
     for (const character of data.highscores.highscore_list){
       if (character.name == charName){
         document.getElementById("current").value = character.level
+        document.getElementById("charLevel").textContent = character.level
         console.log(character.name + " fetched")
         return character;
       }
@@ -67,6 +68,8 @@ async function calculate() {
   var fecha = document.getElementById("goalDatePicker").value;
   fin = new Date(fecha);
 
+  const bar = document.querySelector(".bar");
+
   //if ( char.level < 600 ) document.getElementById("target").value = 600
   //if ( char.level >= 600 && char.level < 650 ) document.getElementById("target").value = 650
   //if ( char.level >= 650 && char.level < 700 ) document.getElementById("target").value = 700
@@ -102,6 +105,7 @@ async function calculate() {
 
 
   document.getElementById("myRange").value = pctjeApi
+  bar.style.setProperty("--progress", pctjeApi.toString()+"%");
 
 
   document.getElementById("xpDayG").textContent="";

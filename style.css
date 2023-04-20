@@ -8,42 +8,137 @@ body {
     margin: 0px;
 }
 .header {
-    padding: 1%;
+    padding: 5px;
     text-align: left;
     padding-left: 6%;
     background: rgb(139, 99, 227);
     color: white;
-    font-size: 15px;
+    font-size: 20px;
     margin-top: 0;
-    margin-bottom: 30px;
+    margin-bottom: 0px;
 }
-.header-items {
-    display: block;
-    flex: auto;
+.header-button {
+    background-color: rgb(139, 99, 227);
+    color: white;
+    border: none;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: fit-content;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: opacity 0.15s;
 }
-.header-item-1 h1, .header-item-1 img {
+.header-button:hover {
+    box-shadow: 2px 2px 2px rgb(37, 28, 56, 0.3);
+}
+.header-button:active {
+    box-shadow: 1px 1px 1px rgb(37, 28, 56, 0.3);
+}
+.header-item-1, .header-item-2, .header-item-3 {
     display: inline-block;
 }
 .header-img {
     margin-right: 10px;
 }
-.inicial {
-    width: 100%;
-    border: 1px solid rgb(0, 0, 0);
-    position: relative;
-    height: 4px;
-    margin-bottom: 4px;
-    background-color: rgb(255, 255, 255);
+.below-header {
+    background-color: rgb(105, 62, 196);
+    padding: 2px;
+    margin-top: 0;
+    overflow: hidden;
 }
-h2{
+.below-header-items {
+    display: inline-block;
+    margin-right: 40px;
+    float: right;
+
+}
+.below-header-item-1, .below-header-item-2, .below-header-item-3, .below-header-item-4, .below-header-item-5 {
+    display: inline-block;
+    justify-content: center;
+    padding: 10px;
+}
+.below-header-item-1, .below-header-item-4 {
+    vertical-align: bottom;
+}
+.below-header-img, .below-header-label {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    justify-content: center;
+}
+.below-header-label {
+    text-align: center;
+    color: whitesmoke;
+    padding: 5px;
+}
+.below-header-img {
+    width: 60px;
+}
+.tool-title-inner-container {
+    text-align: center;
+}
+.calculation-block {
+    margin-top: 100px;
+    display: block;
+}
+.calculation-block-inner-contaier {
+    text-align: center;
+}
+.current-level-div, .target-level-div {
+    display: inline-block;
+    padding: 10px;
+}
+
+h1, h2, h3{
     color: white;
+}
+.rashid-title {
+    margin-left: 30px;
 }
 label {
     color: rgb(139, 99, 227);
 }
-.left-label {
-    display: block;
-    padding: 5px;
+.search-character {
+    font-size: 18px;
+    margin-top: 5px;
+    margin-right: 10px;
+    width: 250px;
+}
+.progress-bar {
+    width: 100%;
+    border: 1px solid rgb(0, 0, 0);
+    height: 4px;
+    margin-bottom: 4px;
+    background-color: rgb(255, 255, 255);
+}
+.progress-bar-inner {
+    width: 75%;
+    background-color: rgb(33, 250, 5);
+}
+.progress {
+    --progress: 0%;
+    width: 498px;
+    height: 10px;
+    margin: 1em auto;
+    border: 1px solid #000000;
+}
+  
+.progress .bar {
+    width: var(--progress);
+    height: 100%;
+    background: rgb(0, 192, 0);
+}
+.level-inner {
+    width: 500px;
+    overflow: hidden;
+}
+.level-name, .level-number {
+    display: inline-block;
+}
+.level-name {
+}
+.level-number {
+
 }
 .char-button {
     background-color: rgb(139, 99, 227);
@@ -98,30 +193,15 @@ label {
 .level-button:active {
     opacity: 0.5;
 }
-.hgpak {
-    width: 100%;
-    border: 1px solid rgb(0, 0, 0);
-    position: relative;
-    height: 4px;
-    margin-bottom: 4px;
-    background-color: rgb(255, 255, 255);
-}
-.hgpak::after {
-    content: "";
-    display: block;
-    height: 2px;
-    width: 57%;
-    background-color: rgb(0, 192, 0);
-}
-.hgpak::before, ::after {
-    box-sizing: inherit;
-}
-.left-block {
-    float: left;
+
+.left-container {
+    width: 200px;
+    display: inline-block;
     padding: 15px;
     margin-right: 40px;
 }
 .left-inner-div {
+    display: inline-block;
     align-items: center;
     padding: 10px;
 }

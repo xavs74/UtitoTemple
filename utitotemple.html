@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+  
   <head>
     <title>Utito Temple</title>
     <link rel="stylesheet" href="style.css">
@@ -8,100 +9,132 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   </head>
+  
   <body onload="init()">
     <script src="js/exp.js"></script>
     
     <header class="header">
       <div class="header-items">
         <div class="header-item-1">
-          <img class="header-img" src="img/favicon.ico" width="1.25%" height="1.25%">
+          <img class="header-img" src="img/favicon.ico" width="30px">
+        </div>
+        <div class="header-item-2">
           <h1>Utito Temple</h1>
         </div>
-        <div>
+        <div class="header-item-3">
           <nav>
-            <a>1</a>
-            <a>2</a>
+            <a>
+              <button class="header-button">Experience Calculator</button>
+            </a>
+            <a>
+              <button class="header-button">Otra feature</button>
+            </a>
           </nav>
         </div>
       </div>
     </header>
-    <div class="incial"></div>
 
-    <div class="left-block">
-      <h2>Boosted</h2>
-      <div class="boosted-inner-block">
-        <div class="left-inner-div">
-          <label class="left-label" id="boostedCreatureName"></label>
-          <img id="boostedCreatureImg"></img>
+    <div class="below-header">
+      <div class="below-header-items">
+        <div class="below-header-item-1">
+          <h3>Boosted</h3>
         </div>
-        <div class="left-inner-div">
-          <label class="left-label" id="boostedBossName"></label>
-          <img id="boostedBossImg"></img>
+        <div class="below-header-item-2">
+          <img class="below-header-img" id="boostedCreatureImg" width="70px"></img>
+          <label class="below-header-label" id="boostedCreatureName"></label>
+        </div>   
+        <div class="below-header-item-3">
+          <img class="below-header-img" id="boostedBossImg" width="70px"></img>
+          <label class="below-header-label" id="boostedBossName"></label>
         </div>
-        <h2>Rashid</h2>
-        <div class="left-inner-div">
-          <label class="left-label" id="rashid"></label>
-          <img src="img/Rashid.gif" width="25%" height="25%"></img>
+        <div class="below-header-item-4">
+          <h3 class="rashid-title">Rashid</h3>
+        </div>
+        <div class="below-header-item-5">
+          <img class="below-header-img" src="img/Rashid.gif" width="70px"></img>
+          <label class="below-header-label" id="rashid"></label>
         </div>
       </div>
     </div>
 
-    <label style="margin-left: 25px;" id="characterName">Character Name</label>
-    </br>
-    <input style="width:170px" type="text" id="lookupName" value="Matauemon Shadowflames">
-    <button class="char-button" onclick="document.getElementById('lookupName').value = 'Matauemon Shadowflames'">Matauemon Shadowflames</button>
-    <button class="char-button" onclick="document.getElementById('lookupName').value = 'Sir Peppi'">Sir Peppi</button>
-    <button class="char-button" onclick="document.getElementById('lookupName').value = 'Larerdrir'">Larerdrir</button>
-    </br>
-    <!--
-    <button onclick="characterLookup(document.getElementById('lookupName').value)">Buscar</button>
-    </br>
-
-    <label id="voc"></label>
-    </br>
-    <label id="world"></label>
-    </br>
-    <label id="currentExpApi"> </label>
-    </br>
-    -->
-    </br>
-    <label style="margin-left: 25px;">Current lvl</label>
-    <label style="margin-left: 65px;">Target lvl</label>
-    </br>
-    <input style="width:130px" type="number" id="current">
-    <input style="width:130px" type="number" id="target" value="600">
-    <button class="level-button" onclick="document.querySelector('#target').value = 600">600</button>
-    <button class="level-button" onclick="document.querySelector('#target').value = 650">650</button>
-    <button class="level-button" onclick="document.querySelector('#target').value = 700">700</button>
-    <button class="level-button" onclick="document.querySelector('#target').value = 750">750</button>
-    <button class="level-button" onclick="document.querySelector('#target').value = 800">800</button>
-
-    <div class="slidecontainer">
-      <input type="range" min="0" max="100" value="0" class="slider" id="myRange">
+    <div class="tool-title">
+      <div class="tool-title-inner-container">
+        <h1>
+            Experience Calculator
+        </h1>
+      </div>
     </div>
-    <label for="start">Goal date:</label>
 
-    <input type="date" id="goalDatePicker" name="trip-start"
-          value="2023-04-17"
-          min="2023-03-01" max="2024-01-01">
-    </br>
-    <button class="calcular-button" onclick="calculate()">CALCULAR</button>
-    </br>
-    <label id="expShare"> </label>
-    </br>
-    <label id="blessCost"> </label>
-    </br>
-    <label id="xpSiguienteLvl"></label>
-    </br>
-    <label id="dias"></label>
-    </br>
-    <label id="xpTotal"></label>
-    </br>
-    <label id="xpDayG" style="color:green; font-weight:bold"></label>
-    <label id="xpDayR" style="color:red; font-weight:bold"></label>
-    </br>
-    <label id="xpWeek"></label>
-    </br>
-    <label id="xpMonth"></label>
+    <div class="calculation-block">
+      <div class="calculation-block-inner-contaier">
+        <label style="margin-left: 25px;" id="characterName">Character Name</label>
+        </br>
+        <input class="search-character" placeholder="Character Name" type="text" id="lookupName">
+        <button class="char-button" onclick="document.getElementById('lookupName').value = 'Matauemon Shadowflames'">Matauemon Shadowflames</button>
+        <button class="char-button" onclick="document.getElementById('lookupName').value = 'Sir Peppi'">Sir Peppi</button>
+        <button class="char-button" onclick="document.getElementById('lookupName').value = 'Larerdrir'">Larerdrir</button>
+        </br>
+        </br>
+        <div class="current-level-div">
+          <label style="margin-left: 25px;">Current lvl</label>
+          <input class="search-character" style="width:130px" type="number" id="current">
+        </div>
+        <div class="target-level-div">
+          <label style="margin-left: 65px;">Target lvl</label>
+          <input class="search-character" style="width:130px" type="number" id="target" value="600">
+        </div>
+        
+        </br>
+        
+        
+        <button class="level-button" onclick="document.querySelector('#target').value = 600">600</button>
+        <button class="level-button" onclick="document.querySelector('#target').value = 650">650</button>
+        <button class="level-button" onclick="document.querySelector('#target').value = 700">700</button>
+        <button class="level-button" onclick="document.querySelector('#target').value = 750">750</button>
+        <button class="level-button" onclick="document.querySelector('#target').value = 800">800</button>
+
+        <div class="slidecontainer">
+          <input type="range" min="0" max="100" value="0" class="slider" id="myRange">
+        </div>
+        <div class="level">
+          <div class="level-inner">
+            <div class="level-name">
+              <label>Level</label>
+            </div>
+            <div class="level-number">
+              <label id="charLevel"></label>
+            </div>
+            <div class="progress">
+              <div class="bar"></div>
+            </div>
+          </div>
+        </div>
+      
+        <label for="start">Goal date:</label>
+
+        <input type="date" id="goalDatePicker" name="trip-start"
+              value="2023-04-17"
+              min="2023-03-01" max="2024-01-01">
+        </br>
+        <button class="calcular-button" onclick="calculate()">CALCULAR</button>
+        </br>
+        <label id="expShare"> </label>
+        </br>
+        <label id="blessCost"> </label>
+        </br>
+        <label id="xpSiguienteLvl"></label>
+        </br>
+        <label id="dias"></label>
+        </br>
+        <label id="xpTotal"></label>
+        </br>
+        <label id="xpDayG" style="color:green; font-weight:bold"></label>
+        <label id="xpDayR" style="color:red; font-weight:bold"></label>
+        </br>
+        <label id="xpWeek"></label>
+        </br>
+        <label id="xpMonth"></label>
+      </div>
+    </div>
   </body>
 </html>
