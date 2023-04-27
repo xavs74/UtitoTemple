@@ -123,7 +123,10 @@ label {
     border: 1px solid #000000;
     margin-top: 20px;
 }
-  
+.tooltip {
+    height: 3em;
+    width: 10em;
+}
 .progress .bar {
     width: var(--progress);
     height: 100%;
