@@ -1,3 +1,4 @@
+
 async function fetchApi(url) {
     try {
       const response = await fetch(url);
@@ -8,9 +9,9 @@ async function fetchApi(url) {
     }
   }
 
-
 //const url = "https://api.tibiadata.com/v3/highscores/Celesta/experience/druids/"
 
+/*
 async function characterLookup(charName){
   const url = "https://api.tibiadata.com/v3/highscores/Celesta/experience/all/"
   // pages from 1 to 20
@@ -25,6 +26,130 @@ async function characterLookup(charName){
       }
     }
   }
+};
+*/
+
+async function characterLookup(charName) {
+    const url = "https://api.tibiadata.com/v3/highscores/Celesta/experience/all/";
+    const totalPages = 20;
+  
+    try {
+      for (let i = 1; i <= totalPages; i++) {
+        const data = await fetchApi(url + i.toString());
+        const character = data.highscores.highscore_list.find(
+            (char) => char.name.toLowerCase() === charName.toLowerCase());
+  
+        if (character) {
+          //document.getElementById("charLevel").textContent = character.level;
+          console.log(character.name + " fetched");
+          return character;
+        }
+      }
+      
+      // If the character is not found, you can display an error message or handle it as needed
+      console.log("Character not found");
+      return null;
+    } catch (error) {
+      console.log("Error fetching character data:", error);
+      return null;
+    }
+};
+  
+
+async function addCharacterCard() {
+    const characterInput = document.getElementById('character-input');
+    const characterName = characterInput.value.trim();
+  
+    if (characterName !== '') {
+      try {
+        const character = await characterLookup(characterName);
+        if (character) {
+          generateCharacterCard(character);
+          characterInput.value = '';
+        } else {
+          console.log("Character not found");
+        }
+      } catch (error) {
+        console.log("Error fetching character data:", error);
+      }
+    }
+  }
+  
+function generateCharacterCard(character) {
+    const characterGrid = document.getElementById('character-grid');
+    const cardTemplate = document.getElementById('character-card-template');
+  
+    const card = cardTemplate.content.cloneNode(true);
+    const nameElement = card.querySelector('.character-name');
+    const vocationElement = card.querySelector('.character-vocation');
+    const progressBarInner = card.querySelector(".bar");
+  
+    nameElement.textContent = character.name;
+    vocationElement.textContent = character.vocation;
+    const pctjeApi = 100 * (1 - (xpTable[character.level].experience - character.value) / (xpTable[character.level].experience - xpTable[character.level - 1].experience));
+    progressBarInner.style.setProperty("--progress", pctjeApi.toString() + "%");
+
+    calculateCharacterProgress(card, character);
+
+    characterGrid.appendChild(card);
+  }
+
+  function deleteCharacterCard(button) {
+    const card = button.parentNode;
+    card.remove();
+  }
+
+  function calculateCharacterProgress(characterCard, characterData) {
+  
+    // Calculate and update the additional labels
+    const expShareLabel = characterCard.querySelector("#expShare");
+    const blessCostLabel = characterCard.querySelector("#blessCost");
+    const xpSiguienteLvlLabel = characterCard.querySelector("#xpSiguienteLvl");
+    const diasLabel = characterCard.querySelector("#dias");
+    const xpTotalLabel = characterCard.querySelector("#xpTotal");
+    const xpDayGLabel = characterCard.querySelector("#xpDayG");
+    const xpDayRLabel = characterCard.querySelector("#xpDayR");
+    const xpWeekLabel = characterCard.querySelector("#xpWeek");
+    const xpMonthLabel = characterCard.querySelector("#xpMonth");
+    const levelBar = characterCard.querySelector("#charLevel");
+  
+    // Perform calculations based on character data
+    const currentLevel = characterData.level;
+    const targetLevel = Number(document.querySelector("#target").value);
+  
+    const targetXP = [3546319, 4540544, 6245272, 9637054, 13748624];
+    const xpSiguienteLvl = xpTable[currentLevel].experience - characterData.value;
+    const iniExp = characterData.value;
+    const finExp = xpTable[targetLevel - 1].experience;
+    const blessCost = 1.1 * 5 * (20000 + (currentLevel - 120) * 75) + 2 * (26000 + (currentLevel - 120) * 100);
+  
+    // Update the label texts with the calculated values
+    expShareLabel.textContent = "Share desde level " + Math.round(currentLevel * (2 / 3)) + " hasta level " + Math.round(currentLevel * (3 / 2));
+    blessCostLabel.textContent = numberWithDotss(Math.floor(blessCost)) + " k blessings/muerte";
+    xpSiguienteLvlLabel.textContent = numberWithDotss(Math.floor(xpSiguienteLvl)) + " para siguiente nivel";
+    levelBar.textContent = currentLevel;
+  
+    const hoy = new Date();
+    const fin = new Date(document.getElementById("goalDatePicker").value);
+    const daysLeft = Math.floor((fin - hoy) / (1000 * 60 * 60 * 24));
+    diasLabel.textContent = "Quedan " + daysLeft + " días.";
+    xpTotalLabel.textContent = numberWithDotss(Math.floor(finExp - iniExp)) + " xp total";
+  
+    const xpDayG = Math.floor((finExp - iniExp) / daysLeft);
+
+    xpDayGLabel.textContent = numberWithDotss(xpDayG) + " xp/día";
+
+    xpWeekLabel.textContent = numberWithDotss(Math.floor((finExp - iniExp) / daysLeft * 7)) + " xp/semana";
+    xpMonthLabel.textContent = numberWithDotss(Math.floor((finExp - iniExp) / daysLeft * 30)) + " xp/mes";
+  }
+ 
+function chargestimeleft() {
+    charges = document.getElementById("numCharges").value
+    timeh = charges/3600*2
+    h = Math.floor(timeh)
+    min = Math.round((timeh % 1)*60)
+    document.getElementById("timeleft").textContent = h + "h " + min + "min"
+
 };
 
 async function rashid(){
@@ -56,9 +181,28 @@ async function boostedBoss(){
 };
 
 function numberWithDotss(x) {
-  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  //return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  if (typeof x !== 'number') {
+    return x; // Return the input as-is if it's not a number
+  }
+
+  const numberString = x.toString();
+  const parts = [];
+  let chunk = '';
+
+  for (let i = numberString.length - 1; i >= 0; i--) {
+    chunk = numberString[i] + chunk;
+
+    if (chunk.length === 3 || i === 0) {
+      parts.unshift(chunk);
+      chunk = '';
+    }
+  }
+
+  return parts.join('.');
 };
 
+/*
 async function calculate() {
 
   const char = await characterLookup(document.getElementById('lookupName').value)
@@ -126,6 +270,76 @@ async function calculate() {
   document.getElementById("blessCost").textContent = numberWithDotss(Math.floor(1.1*5*(20000+(currentLvl-120)*75)+2*(26000+(currentLvl-120)*100))) + " k blessings/muerte";
   document.getElementById("expShare").textContent = "Share desde level " + Math.round(currentLvl * (2/3)) + " hasta level " + Math.round(currentLvl * (3/2));
 }
+*/
+async function calculate() {
+    const charName = document.getElementById('lookupName').value;
+    const targetLevel = Number(document.querySelector("#target").value);
+    const char = await characterLookup(charName);
+  
+    if (!char) {
+      console.log("Character not found");
+      return;
+    }
+  
+    const currentLevel = xpTable[char.level];
+    const nextLevel = xpTable[char.level + 1];
+    const currentExperience = char.value - currentLevel.experience;
+    const remainingExperience = nextLevel.experience - currentExperience;
+    const requiredExperience = xpTable[targetLevel - 1].experience - char.value;
+    const daysLeft = calculateDaysLeft();
+  
+    updateProgressBar(currentExperience, remainingExperience);
+    updateCharacterLevel(char.level);
+    updateLevelProgress(remainingExperience);
+    updateExperienceStats(requiredExperience, daysLeft);
+    updateMiscellaneousStats(char.level);
+  
+    createCharacterCard(char);
+  }
+  
+  function updateProgressBar(currentExperience, remainingExperience) {
+    const progressPercentage = (currentExperience / remainingExperience) * 100;
+    const bar = document.querySelector(".bar");
+    bar.style.setProperty("--progress", progressPercentage + "%");
+  }
+  
+  function updateCharacterLevel(level) {
+    const charLevelElement = document.getElementById("charLevel");
+    charLevelElement.textContent = level;
+  }
+  
+  function updateLevelProgress(remainingExperience) {
+    const xpSiguienteLvlElement = document.getElementById("xpSiguienteLvl");
+    xpSiguienteLvlElement.textContent = numberWithDotss(remainingExperience) + " para siguiente lvl";
+  }
+  
+  function updateExperienceStats(requiredExperience, daysLeft) {
+    const xpDayGElement = document.getElementById("xpDayG");
+    const xpDayRElement = document.getElementById("xpDayR");
+  
+    const xpDay = Math.floor(requiredExperience / daysLeft);
+    if (xpDay > requiredExperience) {
+      xpDayGElement.textContent = numberWithDotss(xpDay) + " xp/dia";
+      xpDayRElement.textContent = "";
+    } else {
+      xpDayGElement.textContent = "";
+      xpDayRElement.textContent = numberWithDotss(xpDay) + " xp/dia";
+    }
+  
+    document.getElementById("dias").textContent = "Quedan " + daysLeft + " dias.";
+    document.getElementById("xpTotal").textContent = numberWithDotss(requiredExperience) + " xp total";
+    document.getElementById("xpWeek").textContent = numberWithDotss(xpDay * 7) + " xp/semana";
+    document.getElementById("xpMonth").textContent = numberWithDotss(xpDay * 30) + " xp/mes";
+  }
+  
+  function updateMiscellaneousStats(currentLevel) {
+    const blessCost = calculateBlessingCost(currentLevel);
+    const expShareElement = document.getElementById("expShare");
+    const blessCostElement = document.getElementById("blessCost");
+  
+    expShareElement.textContent = "Share desde level " + Math.round(currentLevel * (2 / 3)) + " hasta level " + Math.round(currentLevel * (3 / 2));
+    blessCostElement.textContent = numberWithDotss(blessCost) + " k blessings/muerte";
+  }
 
 async function init(){
     boostedCreature();

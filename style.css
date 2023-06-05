@@ -81,12 +81,13 @@ body {
     margin-top: 100px;
     display: block;
 }
-.calculation-block-inner-contaier {
+.calculation-block-inner-contaier, .chargesCalc {
     text-align: center;
 }
 .current-level-div, .target-level-div {
     display: inline-block;
     padding: 10px;
+    vertical-align: top;
 }
 
 h1, h2, h3{
@@ -210,4 +211,53 @@ label {
     display: inline-block;
     align-items: center;
     padding: 10px;
+}
+.input-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  
+  .character-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    text-align: center;
+    min-height: 80px; /* Added to ensure a minimum height for the card */
+  }
+  
+  .character-name {
+    color: rgb(139, 99, 227);
+    margin-bottom: 10px;
+  }
+  
+  .character-vocation {
+    color: rgb(139, 99, 227);
+  }
+
+.delete-button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 20px;
+  height: 20px;
+  background-color: transparent;
+  border: none;
+  font-size: 18px;
+  color: #999;
+  cursor: pointer;
+  display: flex; /* Added to allow cross symbol to appear */
+  justify-content: center; /* Added to center cross symbol horizontally */
+  align-items: center; /* Added to center cross symbol vertically */
 }

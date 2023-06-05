@@ -65,6 +65,64 @@
       </div>
     </div>
 
+    <div class="input-container">
+      <input type="text" id="character-input" class="search-character" placeholder="Character Name">
+      <button class="calcular-button" id="add-character-btn" onclick="addCharacterCard()">Add Character</button>
+    </div>
+    <div class="target-level-div">
+      <label style="margin-left: 65px;">Target lvl</label>
+      <input class="search-character" style="width:130px" type="number" id="target" value="650">
+      <button class="level-button" onclick="document.querySelector('#target').value = 600">600</button>
+      <button class="level-button" onclick="document.querySelector('#target').value = 650">650</button>
+      <button class="level-button" onclick="document.querySelector('#target').value = 700">700</button>
+      <button class="level-button" onclick="document.querySelector('#target').value = 750">750</button>
+      <button class="level-button" onclick="document.querySelector('#target').value = 800">800</button>
+    </div>
+
+    <label for="start">Goal date:</label>
+
+    <input type="date" id="goalDatePicker" name="trip-start"
+          value="2023-07-01"
+          min="2023-03-01" max="2024-01-01">
+    
+    <div class="grid-container" id="character-grid">
+      <!-- Character cards will be dynamically added here -->
+    </div>
+    
+    <template id="character-card-template">
+      <div class="character-card">
+        <button class="delete-button" onclick="deleteCharacterCard(this)">&times;</button>
+        <p class="character-name"></p>
+        <p class="character-vocation"></p>
+        <div class="current-level-div">
+          <div class="level">
+            <div class="level-inner">
+              <div class="level-name">
+                <label>Level</label>
+              </div>
+              <div class="level-number">
+                <label id="charLevel"></label>
+              </div>
+              <div class="progress">
+                <div id="bar" class="bar"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="additional-info">
+          <label id="expShare">Share desde level XX hasta level XX</label><br>
+          <label id="blessCost">Blessings Cost: XX k blessings/muerte</label><br>
+          <label id="xpSiguienteLvl">XX para siguiente nivel</label><br>
+          <label id="dias">Quedan XX días.</label><br>
+          <label id="xpTotal">XX xp total</label><br><br>
+          <label id="xpDayG" style="color: green; font-weight: bold"></label></label><br>
+          <label id="xpWeek">XX xp/semana</label><br>
+          <label id="xpMonth">XX xp/mes</label>
+        </div>
+      </div>
+    </template>
+    
+
     <div class="calculation-block">
       <div class="calculation-block-inner-contaier">
         <label style="margin-left: 25px;" id="characterName">Character Name</label>
@@ -90,26 +148,6 @@
             </div>
           </div>
         </div>
-        <div class="target-level-div">
-          <label style="margin-left: 65px;">Target lvl</label>
-          <input class="search-character" style="width:130px" type="number" id="target" value="650">
-        </div>
-        
-        </br>
-        
-        
-        <button class="level-button" onclick="document.querySelector('#target').value = 600">600</button>
-        <button class="level-button" onclick="document.querySelector('#target').value = 650">650</button>
-        <button class="level-button" onclick="document.querySelector('#target').value = 700">700</button>
-        <button class="level-button" onclick="document.querySelector('#target').value = 750">750</button>
-        <button class="level-button" onclick="document.querySelector('#target').value = 800">800</button>
-      
-        <label for="start">Goal date:</label>
-
-        <input type="date" id="goalDatePicker" name="trip-start"
-              value="2023-07-01"
-              min="2023-03-01" max="2024-01-01">
-        </br>
         <button class="calcular-button" onclick="calculate()">CALCULAR</button>
         </br>
         <label id="expShare"> </label>
@@ -128,6 +166,12 @@
         <label id="xpWeek"></label>
         </br>
         <label id="xpMonth"></label>
+      </div>
+      <div class="chargesCalc">
+        <input class="search-character" placeholder="# of charges" type="number" id="numCharges">
+        <button class="char-button" onclick="chargestimeleft()">CALCULAR</button>
+        <br>
+        <label id="timeleft"></label>
       </div>
     </div>
   </body>
