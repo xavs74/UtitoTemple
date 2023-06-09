@@ -235,6 +235,7 @@ label {
     padding: 20px;
     text-align: center;
     min-height: 80px; /* Added to ensure a minimum height for the card */
+    min-width: 100px;
   }
   
   .character-name {
@@ -261,3 +262,8 @@ label {
   justify-content: center; /* Added to center cross symbol horizontally */
   align-items: center; /* Added to center cross symbol vertically */
 }
+
+#levelChart {
+    width: 800px;
+    height: 400px;
+  }

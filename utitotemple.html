@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   
   <body onload="init()">
@@ -68,6 +69,11 @@
     <div class="input-container">
       <input type="text" id="character-input" class="search-character" placeholder="Character Name">
       <button class="calcular-button" id="add-character-btn" onclick="addCharacterCard()">Add Character</button>
+      <label for="xp-per-day">XP per Day:</label>
+      <input type="number" id="xp-per-day" min="0" step="1" placeholder="Number in KKs">
+      <button class="char-button" onclick="document.getElementById('character-input').value = 'Matauemon Shadowflames'">Matauemon Shadowflames</button>
+      <button class="char-button" onclick="document.getElementById('character-input').value = 'Sir Peppi'">Sir Peppi</button>
+      <button class="char-button" onclick="document.getElementById('character-input').value = 'Larerdrir'">Larerdrir</button>
     </div>
     <div class="target-level-div">
       <label style="margin-left: 65px;">Target lvl</label>
@@ -77,6 +83,12 @@
       <button class="level-button" onclick="document.querySelector('#target').value = 700">700</button>
       <button class="level-button" onclick="document.querySelector('#target').value = 750">750</button>
       <button class="level-button" onclick="document.querySelector('#target').value = 800">800</button>
+    </div>
+    <div class="chargesCalc">
+      <input class="search-character" placeholder="# of charges" type="number" id="numCharges">
+      <button class="char-button" onclick="chargestimeleft()">CALCULAR</button>
+      <br>
+      <label id="timeleft"></label>
     </div>
 
     <label for="start">Goal date:</label>
@@ -119,18 +131,19 @@
           <label id="xpWeek">XX xp/semana</label><br>
           <label id="xpMonth">XX xp/mes</label>
         </div>
+        <canvas id="milestoneChart"></canvas>
       </div>
     </template>
     
-
+<!--
     <div class="calculation-block">
       <div class="calculation-block-inner-contaier">
         <label style="margin-left: 25px;" id="characterName">Character Name</label>
         </br>
         <input class="search-character" placeholder="Character Name" type="text" id="lookupName">
-        <button class="char-button" onclick="document.getElementById('lookupName').value = 'Matauemon Shadowflames'">Matauemon Shadowflames</button>
-        <button class="char-button" onclick="document.getElementById('lookupName').value = 'Sir Peppi'">Sir Peppi</button>
-        <button class="char-button" onclick="document.getElementById('lookupName').value = 'Larerdrir'">Larerdrir</button>
+        <button class="char-button" onclick="document.getElementById('character-input').value = 'Matauemon Shadowflames'">Matauemon Shadowflames</button>
+        <button class="char-button" onclick="document.getElementById('character-input').value = 'Sir Peppi'">Sir Peppi</button>
+        <button class="char-button" onclick="document.getElementById('character-input').value = 'Larerdrir'">Larerdrir</button>
         </br>
         </br>
         <div class="current-level-div">
@@ -167,12 +180,8 @@
         </br>
         <label id="xpMonth"></label>
       </div>
-      <div class="chargesCalc">
-        <input class="search-character" placeholder="# of charges" type="number" id="numCharges">
-        <button class="char-button" onclick="chargestimeleft()">CALCULAR</button>
-        <br>
-        <label id="timeleft"></label>
-      </div>
+      -->
+      
     </div>
   </body>
 </html>

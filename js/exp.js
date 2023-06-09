@@ -76,10 +76,17 @@ async function addCharacterCard() {
   }
   
 function generateCharacterCard(character) {
+    // Create a unique card ID
+    const cardId = `card-${cardIdCounter++}`
+
     const characterGrid = document.getElementById('character-grid');
     const cardTemplate = document.getElementById('character-card-template');
   
-    const card = cardTemplate.content.cloneNode(true);
+    const card = cardTemplate.content.cloneNode(true).querySelector('.character-card');
+
+    // Set the card ID
+    card.id = cardId;
+
     const nameElement = card.querySelector('.character-name');
     const vocationElement = card.querySelector('.character-vocation');
     const progressBarInner = card.querySelector(".bar");
@@ -89,9 +96,10 @@ function generateCharacterCard(character) {
     const pctjeApi = 100 * (1 - (xpTable[character.level].experience - character.value) / (xpTable[character.level].experience - xpTable[character.level - 1].experience));
     progressBarInner.style.setProperty("--progress", pctjeApi.toString() + "%");
 
+    characterGrid.appendChild(card);
+    
     calculateCharacterProgress(card, character);
 
-    characterGrid.appendChild(card);
   }
 
   function deleteCharacterCard(button) {
@@ -112,6 +120,7 @@ function generateCharacterCard(character) {
     const xpWeekLabel = characterCard.querySelector("#xpWeek");
     const xpMonthLabel = characterCard.querySelector("#xpMonth");
     const levelBar = characterCard.querySelector("#charLevel");
+    const xpPerDay = document.getElementById("xp-per-day").value;
   
     // Perform calculations based on character data
     const currentLevel = characterData.level;
@@ -141,7 +150,77 @@ function generateCharacterCard(character) {
 
     xpWeekLabel.textContent = numberWithDotss(Math.floor((finExp - iniExp) / daysLeft * 7)) + " xp/semana";
     xpMonthLabel.textContent = numberWithDotss(Math.floor((finExp - iniExp) / daysLeft * 30)) + " xp/mes";
+
+    //
+    const milestoneDates = calculateProjectedData(currentLevel, xpPerDay);
+
+    // Sort milestone dates based on milestone level
+    milestoneDates.sort((a, b) => a.level - b.level);
+
+    // Create an array of milestone levels and milestone dates
+    const milestoneLevels = milestoneDates.map((milestone) => milestone.level);
+    const milestoneDatesFormatted = milestoneDates.map((milestone) => milestone.date);
+  
+    // Create chart for milestone dates
+    const milestoneChartCanvas = characterCard.querySelector('#milestoneChart');
+    const milestoneChartData = {
+      labels: milestoneDatesFormatted,
+      datasets: [
+        {
+          label: 'Milestone Levels',
+          data: milestoneLevels,
+          backgroundColor: 'rgba(75, 192, 192, 0.2)',
+          borderColor: 'rgba(75, 192, 192, 1)',
+          borderWidth: 1,
+        },
+      ],
+    };
+
+    new Chart(milestoneChartCanvas, {
+        type: 'line',
+        data: milestoneChartData,
+        options: {
+          responsive: true,
+          scales: {
+            x: {
+              title: {
+                display: true,
+                text: 'Date',
+              },
+            },
+            y: {
+              title: {
+                display: true,
+                text: 'Level',
+              },
+            },
+          },
+        },
+      });    
+
   }
+
+  function calculateProjectedData(currentLevel, xpPerDay) {
+    const milestones = [];
+    const currentDate = new Date();
+  
+    for (let i = currentLevel + 10; i <= 900; i += 10) {
+      const xpNeeded = xpTable[i].experience - xpTable[currentLevel].experience;
+      const projectedDays = xpNeeded / (xpPerDay * 1000000);
+      const projectedDate = new Date(currentDate.getTime() + projectedDays * 24 * 60 * 60 * 1000);
+  
+      if (!isNaN(projectedDate)) {
+        const formattedDate = `${projectedDate.getFullYear()}-${projectedDate.getMonth() + 1}-${projectedDate.getDate()}`;
+        milestones.push({
+          level: i,
+          date: formattedDate,
+        });
+      }
+    }
+    
+    return milestones;
+  }
+  
  
 function chargestimeleft() {
     charges = document.getElementById("numCharges").value
@@ -347,8 +426,9 @@ async function init(){
     rashid();
 }
 
+let cardIdCounter = 0;
 
-var xpTable = [
+const xpTable = [
     {
         "level": 1,
         "experience": 0
