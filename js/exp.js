@@ -121,6 +121,7 @@ function generateCharacterCard(character) {
     const xpMonthLabel = characterCard.querySelector("#xpMonth");
     const levelBar = characterCard.querySelector("#charLevel");
     const xpPerDay = document.getElementById("xp-per-day").value;
+    const xpPerDayLabel = characterCard.querySelector("#milestone-label");
   
     // Perform calculations based on character data
     const currentLevel = characterData.level;
@@ -137,6 +138,8 @@ function generateCharacterCard(character) {
     blessCostLabel.textContent = numberWithDotss(Math.floor(blessCost)) + " k blessings/muerte";
     xpSiguienteLvlLabel.textContent = numberWithDotss(Math.floor(xpSiguienteLvl)) + " para siguiente nivel";
     levelBar.textContent = currentLevel;
+    xpPerDayLabel.textContent = "Proyeccion subiendo " + xpPerDay + "kk al dia"
+
   
     const hoy = new Date();
     const fin = new Date(document.getElementById("goalDatePicker").value);
