@@ -80,6 +80,7 @@ body {
 .calculation-block {
     margin-top: 100px;
     display: block;
+    text-align: center;
 }
 .calculation-block-inner-contaier, .chargesCalc {
     text-align: center;
@@ -213,7 +214,8 @@ label {
     padding: 10px;
 }
 .input-container {
-    display: flex;
+    display: block;
+    text-align: center;
     gap: 10px;
     margin-bottom: 20px;
   }

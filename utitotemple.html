@@ -65,37 +65,36 @@
         </h1>
       </div>
     </div>
-
-    <div class="input-container">
-      <input type="text" id="character-input" class="search-character" placeholder="Character Name">
-      <button class="calcular-button" id="add-character-btn" onclick="addCharacterCard()">Add Character</button>
+    <div class="calculation-block">
+      <div class="input-container">
+        <input type="text" id="character-input" class="search-character" placeholder="Character Name">
+        <button class="calcular-button" id="add-character-btn" onclick="addCharacterCard()">Add Character</button>
+        <button class="char-button" onclick="document.getElementById('character-input').value = 'Matauemon Shadowflames'">Matauemon Shadowflames</button>
+        <button class="char-button" onclick="document.getElementById('character-input').value = 'Sir Peppi'">Sir Peppi</button>
+        <button class="char-button" onclick="document.getElementById('character-input').value = 'Larerdrir'">Larerdrir</button>
+      </div>
       <label for="xp-per-day">XP per Day:</label>
       <input type="number" id="xp-per-day" min="0" step="1" placeholder="Number in KKs">
-      <button class="char-button" onclick="document.getElementById('character-input').value = 'Matauemon Shadowflames'">Matauemon Shadowflames</button>
-      <button class="char-button" onclick="document.getElementById('character-input').value = 'Sir Peppi'">Sir Peppi</button>
-      <button class="char-button" onclick="document.getElementById('character-input').value = 'Larerdrir'">Larerdrir</button>
+      <div class="target-level-div">
+        <label style="margin-left: 65px;">Target lvl</label>
+        <input class="search-character" style="width:130px" type="number" id="target" value="650">
+        <button class="level-button" onclick="document.querySelector('#target').value = 600">600</button>
+        <button class="level-button" onclick="document.querySelector('#target').value = 650">650</button>
+        <button class="level-button" onclick="document.querySelector('#target').value = 700">700</button>
+        <button class="level-button" onclick="document.querySelector('#target').value = 750">750</button>
+        <button class="level-button" onclick="document.querySelector('#target').value = 800">800</button>
+      </div>
+      <label for="start">Goal date:</label>
+      <input type="date" id="goalDatePicker" name="trip-start"
+            value="2023-07-01"
+            min="2023-03-01" max="2024-01-01">
+      <div class="chargesCalc">
+        <input class="search-character" placeholder="# of charges" type="number" id="numCharges">
+        <button class="char-button" onclick="chargestimeleft()">CALCULAR</button>
+        <br>
+        <label id="timeleft"></label>
+      </div>
     </div>
-    <div class="target-level-div">
-      <label style="margin-left: 65px;">Target lvl</label>
-      <input class="search-character" style="width:130px" type="number" id="target" value="650">
-      <button class="level-button" onclick="document.querySelector('#target').value = 600">600</button>
-      <button class="level-button" onclick="document.querySelector('#target').value = 650">650</button>
-      <button class="level-button" onclick="document.querySelector('#target').value = 700">700</button>
-      <button class="level-button" onclick="document.querySelector('#target').value = 750">750</button>
-      <button class="level-button" onclick="document.querySelector('#target').value = 800">800</button>
-    </div>
-    <div class="chargesCalc">
-      <input class="search-character" placeholder="# of charges" type="number" id="numCharges">
-      <button class="char-button" onclick="chargestimeleft()">CALCULAR</button>
-      <br>
-      <label id="timeleft"></label>
-    </div>
-
-    <label for="start">Goal date:</label>
-
-    <input type="date" id="goalDatePicker" name="trip-start"
-          value="2023-07-01"
-          min="2023-03-01" max="2024-01-01">
     
     <div class="grid-container" id="character-grid">
       <!-- Character cards will be dynamically added here -->
