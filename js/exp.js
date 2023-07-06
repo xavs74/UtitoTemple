@@ -90,11 +90,30 @@ function generateCharacterCard(character) {
     const nameElement = card.querySelector('.character-name');
     const vocationElement = card.querySelector('.character-vocation');
     const progressBarInner = card.querySelector(".bar");
+    const cardImage = card.querySelector(".card-img");
+    const lvlandDate = card.querySelector("#lvlandDate");
+    
   
     nameElement.textContent = character.name;
     vocationElement.textContent = character.vocation;
     const pctjeApi = 100 * (1 - (xpTable[character.level].experience - character.value) / (xpTable[character.level].experience - xpTable[character.level - 1].experience));
     progressBarInner.style.setProperty("--progress", pctjeApi.toString() + "%");
+    switch(character.vocation){
+        case "Elder Druid":
+            cardImage.src = "img/ed.png";
+            break;
+        case "Elite Knight":
+            cardImage.src = "img/ek.png";
+            break;
+        case "Master Sorcerer":
+            cardImage.src = "img/ms.png";
+            break;
+        case "Royal Paladin":
+            cardImage.src = "img/rp.png";
+            break;
+    }
+    lvlandDate.textContent = "XP para level " + document.querySelector('#target').value + " el dia " + document.querySelector('#goalDatePicker').value;
+
 
     characterGrid.appendChild(card);
     
