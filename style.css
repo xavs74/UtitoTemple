@@ -7,6 +7,17 @@ body {
     font-family: Roboto;
     margin: 0px;
 }
+a {
+    text-decoration: none;
+}
+ul {
+    list-style-type: none;
+    display: inline;
+}
+.clickable {
+    cursor: pointer;
+    transition: opacity 0.15s;
+}
 .header {
     padding: 5px;
     text-align: left;
@@ -25,8 +36,6 @@ body {
     padding-bottom: 5px;
     width: fit-content;
     border-radius: 4px;
-    cursor: pointer;
-    transition: opacity 0.15s;
 }
 .header-button:hover {
     box-shadow: 2px 2px 2px rgb(37, 28, 56, 0.3);
@@ -51,12 +60,15 @@ body {
     margin-right: 40px;
     float: right;
 }
-.below-main-header-items {
+.boosted-items {
     margin-right: 40px;
-    float: right;
+    align-items: center;
 }
 .below-header-item-1, .below-header-item-2, .below-header-item-3, .below-header-item-4, .below-header-item-5 {
     display: inline-block;
+    padding: 10px;
+}
+.boosted-item-1, .boosted-item-2, .boosted-item-3, .boosted-item-4, .boosted-item-5 {
     justify-content: center;
     padding: 10px;
 }

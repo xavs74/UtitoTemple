@@ -17,19 +17,17 @@
     <header class="header">
       <div class="header-items">
         <div class="header-item-1">
-          <img class="header-img" src="img/favicon.ico" width="30px">
+          <a href="utito-main.html"><img class="header-img" src="img/favicon.ico" width="30px"></a>
         </div>
         <div class="header-item-2">
-          <h1>Utito Temple</h1>
+          <a href="utito-main.html"><h1>Utito Temple</h1></a>
         </div>
         <div class="header-item-3">
           <nav>
-            <a>
-              <button class="header-button">Experience Calculator</button>
-            </a>
-            <a>
-              <button class="header-button">Otra feature</button>
-            </a>
+            <ul>
+              <li class="header-item-1"><a href="exp-calculator.html"><button class="clickable header-button">Experience Calculator</button></a></li>
+              <li class="header-item-1"><a href="otra-feature.html"><button class="header-button">Otra feature</button></a></li>
+            </ul>
           </nav>
         </div>
       </div>
@@ -75,10 +73,10 @@
         <button class="char-button" onclick="document.getElementById('character-input').value = 'Hispano clubgod'">Hispano</button>
       </div>
       <label for="xp-per-day">XP per Day:</label>
-      <input type="number" id="xp-per-day" min="0" step="1" placeholder="Number in KKs">
+      <input type="number" id="xp-per-day" min="0" step="1" placeholder="Number in KKs" value="20">
       <div class="target-level-div">
         <label style="margin-left: 65px;">Target lvl</label>
-        <input class="search-character" style="width:130px" type="number" id="target" value="700">
+        <input class="search-character" style="width:130px" type="number" id="target" value="800">
         <button class="level-button" onclick="document.querySelector('#target').value = 600">600</button>
         <button class="level-button" onclick="document.querySelector('#target').value = 650">650</button>
         <button class="level-button" onclick="document.querySelector('#target').value = 700">700</button>
@@ -87,18 +85,22 @@
       </div>
       <label for="start">Goal date:</label>
       <input type="date" id="goalDatePicker" name="trip-start"
-            value="2023-09-01"
+            value="2023-12-31"
             min="2023-03-01" max="2124-01-01">
-      <div class="chargesCalc">
-        <input class="search-character" placeholder="# of charges" type="number" id="numCharges">
-        <button class="char-button" onclick="chargestimeleft()">CALCULAR</button>
-        <br>
-        <label id="timeleft"></label>
-      </div>
     </div>
     
     <div class="grid-container" id="character-grid">
       <!-- Character cards will be dynamically added here -->
+    </div>
+
+    <div class="additional-info">
+      <h2>Character Information</h2>
+      <ul class="character-details">
+          <li><strong>Name:</strong> Character Name</li>
+          <li><strong>Vocation:</strong> Character Vocation</li>
+          <li><strong>Level:</strong> Character Level</li>
+          <!-- Add more character details here as list items -->
+      </ul>
     </div>
     
     <template id="character-card-template">
@@ -123,6 +125,7 @@
           </div>
         </div>
         <div class="additional-info">
+          <label id="currentExp">XP XX</label><br>
           <label id="expShare">Share desde level XX hasta level XX</label><br>
           <label id="blessCost">Blessings Cost: XX k blessings/muerte</label><br>
           <label id="xpSiguienteLvl">XX para siguiente nivel</label><br><br>
