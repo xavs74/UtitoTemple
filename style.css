@@ -50,7 +50,10 @@ body {
     display: inline-block;
     margin-right: 40px;
     float: right;
-
+}
+.below-main-header-items {
+    margin-right: 40px;
+    float: right;
 }
 .below-header-item-1, .below-header-item-2, .below-header-item-3, .below-header-item-4, .below-header-item-5 {
     display: inline-block;
