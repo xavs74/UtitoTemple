@@ -63,11 +63,19 @@
         </h1>
       </div>
     </div>
+
     <div class="calc-container">
       <div>
-
+        <label>What is your character name?</label><br>
+        <input type="text" id="character-input" class="search-character" placeholder="Character Name"><br>
+        <label>What is your target level?</label><br>
+        <input class="search-character" style="width:130px" type="number" id="target" value="800"><br>
+        <label>What is your target date?</label><br>
+        <label for="start">Goal date:</label>
+        <input type="date" id="goalDatePicker" name="trip-start" value="2023-12-31" min="2023-03-01" max="2124-01-01">
       </div>
     </div>
+
     <div class="calculation-block">
       <div class="input-container">
         <input type="text" id="character-input" class="search-character" placeholder="Character Name">
