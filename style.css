@@ -18,6 +18,9 @@ ul {
     cursor: pointer;
     transition: opacity 0.15s;
 }
+.currentpage {
+    box-shadow: 2px 2px 2px rgb(37, 28, 56, 0.3);
+}
 .header {
     padding: 5px;
     text-align: left;
