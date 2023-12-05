@@ -148,13 +148,14 @@ function generateCharacterCard(character) {
     const targetLevel = Number(document.querySelector("#target").value);
   
     const targetXP = [3546319, 4540544, 6245272, 9637054, 13748624];
+    const currentXP = characterData.value;
     const xpSiguienteLvl = xpTable[currentLevel].experience - characterData.value;
     const iniExp = characterData.value;
     const finExp = xpTable[targetLevel - 1].experience;
     const blessCost = 1.1 * 5 * (20000 + (currentLevel - 120) * 75) + 2 * (26000 + (currentLevel - 120) * 100);
   
     // Update the label texts with the calculated values
-    currentExpLabel.textContent = "XP " + numberWithDotss(xpTable[currentLevel].experience)
+    currentExpLabel.textContent = "XP " + numberWithDotss(currentXP)
     expShareLabel.textContent = "Share desde level " + Math.round(currentLevel * (2 / 3)) + " hasta level " + Math.round(currentLevel * (3 / 2));
     blessCostLabel.textContent = numberWithDotss(Math.floor(blessCost)) + " k blessings/muerte";
     xpSiguienteLvlLabel.textContent = numberWithDotss(Math.floor(xpSiguienteLvl)) + " para siguiente nivel";
