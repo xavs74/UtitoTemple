@@ -30,7 +30,7 @@ async function characterLookup(charName){
 */
 
 async function characterLookup(charName) {
-    const url = "https://api.tibiadata.com/v3/highscores/Celesta/experience/all/";
+    const url = "https://api.tibiadata.com/v4/highscores/Celesta/experience/all/";
     const totalPages = 20;
   
     try {
