@@ -229,7 +229,7 @@ function generateCharacterCard(character) {
     const milestones = [];
     const currentDate = new Date();
   
-    for (let i = currentLevel + 10; i <= 900; i += 10) {
+    for (let i = currentLevel + 10; i <= currentLevel + 250; i += 10) {
       const xpNeeded = xpTable[i].experience - xpTable[currentLevel].experience;
       const projectedDays = xpNeeded / (xpPerDay * 1000000);
       const projectedDate = new Date(currentDate.getTime() + projectedDays * 24 * 60 * 60 * 1000);
