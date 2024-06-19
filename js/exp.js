@@ -271,14 +271,14 @@ async function rashid(){
 };
 
 async function boostedCreature(){
-  const url = "https://api.tibiadata.com/v3/creatures"
+  const url = "https://api.tibiadata.com/v4/creatures"
   const data = await fetchApi(url)
   document.getElementById("boostedCreatureName").textContent = data.creatures.boosted.name
   document.getElementById("boostedCreatureImg").src = data.creatures.boosted.image_url
 };
 
 async function boostedBoss(){
-  const url = "https://api.tibiadata.com/v3/boostablebosses"
+  const url = "https://api.tibiadata.com/v4/boostablebosses"
   const data = await fetchApi(url)
   document.getElementById("boostedBossName").textContent = data.boostable_bosses.boosted.name
   document.getElementById("boostedBossImg").src = data.boostable_bosses.boosted.image_url
