@@ -126,6 +126,61 @@ function generateCharacterCard(character) {
     card.remove();
   }
 
+  async function addCharacterInfo() {
+    const characterInput = document.getElementById('character-input');
+    const characterName = characterInput.value.trim();
+  
+    if (characterName !== '') {
+      try {
+        const character = await characterLookup(characterName);
+        if (character) {
+          generateCharacterInfo(character);
+          characterInput.value = '';
+        } else {
+          console.log("Character not found");
+        }
+      } catch (error) {
+        console.log("Error fetching character data:", error);
+      }
+    }
+}
+  
+function generateCharacterInfo(character) {
+    const characterGrid = document.getElementById('character-grid');
+  
+    // Create a container for character information
+    const characterInfoDiv = document.createElement('div');
+    characterInfoDiv.className = 'character-info';
+
+    // Create and append character details
+    const nameElement = document.createElement('p');
+    nameElement.innerHTML = `<strong>Name:</strong> ${character.name}`;
+    characterInfoDiv.appendChild(nameElement);
+
+    const vocationElement = document.createElement('p');
+    vocationElement.innerHTML = `<strong>Vocation:</strong> ${character.vocation}`;
+    characterInfoDiv.appendChild(vocationElement);
+
+    const levelElement = document.createElement('p');
+    levelElement.innerHTML = `<strong>Level:</strong> ${character.level}`;
+    characterInfoDiv.appendChild(levelElement);
+
+    const targetLevel = document.querySelector('#target').value;
+    const goalDate = document.querySelector('#goalDatePicker').value;
+    const lvlandDate = document.createElement('p');
+    lvlandDate.textContent = `XP for level ${targetLevel} by ${goalDate}`;
+    characterInfoDiv.appendChild(lvlandDate);
+
+    // Append the character information div to the character grid
+    characterGrid.appendChild(characterInfoDiv);
+}
+
+function deleteCharacterInfo(element) {
+    const infoDiv = element.parentNode;
+    infoDiv.remove();
+}
+
+
   function calculateCharacterProgress(characterCard, characterData) {
   
     // Calculate and update the additional labels
